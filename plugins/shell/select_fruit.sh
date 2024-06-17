@@ -1,4 +1,3 @@
-#!/bin/bash
 FRUIT=$1
 if [ $FRUIT == APPLE ];then
 	echo "You selected Apple!"
