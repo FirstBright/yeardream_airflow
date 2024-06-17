@@ -19,6 +19,8 @@ with DAG(
         print(f'email: {email}')
         print(f'phone: {phone}')
         from pprint import pprint
-        pprint(kwargs)
+        pprint(kwargs.get(data_interval_start))
+        pprint(kwargs.get(data_interval_end))
+
 
     python_task_1 = regist3('hjkim', 'man', 'seoul', email='hjkim_sun@naver.com', phone='010')
