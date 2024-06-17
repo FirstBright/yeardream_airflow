@@ -1,28 +1,23 @@
 from airflow import DAG
-import pendulum
+from datetime import datetime
 from airflow.operators.python import PythonOperator
-from airflow.operators.python import BranchPythonOperator
+from airflow.decorators import task
 
 with DAG(
-    dag_id='dags_branch_python_operator',
-    start_date=pendulum.datetime(2023,4,1, tz='Asia/Seoul'),
-    schedule='0 1 * * *',
+    dag_id='dags_python_with_branch_decorator',
+    start_date=datetime(2024,6,17),
+    schedule=None,
     catchup=False
 ) as dag:
+    @task.branch(task_id='python_branch_task')
     def select_random():
         import random
-
-        item_lst = ['A','B','C']
+        item_lst = ['A', 'B', 'C']
         selected_item = random.choice(item_lst)
         if selected_item == 'A':
             return 'task_a'
         elif selected_item in ['B','C']:
             return ['task_b','task_c']
-    
-    python_branch_task = BranchPythonOperator(
-        task_id='python_branch_task',
-        python_callable=select_random
-    )
     
     def common_func(**kwargs):
         print(kwargs['selected'])
@@ -45,4 +40,4 @@ with DAG(
         op_kwargs={'selected':'C'}
     )
 
-    python_branch_task >> [task_a, task_b, task_c]
+    select_random() >> [task_a, task_b, task_c]
