@@ -26,14 +26,14 @@ class SeoulApiDateColumnSensor(BaseSensorOperator):
             self.log.info('데이터 미갱신')
             return False
 
-    def find_check_date_in_json(data, check_date):
+    def find_check_date_in_json(self,data, check_date):
         if isinstance(data, dict):
             for key, value in data.items():
-                if find_check_date_in_json(value, check_date):
+                if self.find_check_date_in_json(value, check_date):
                     return True
         elif isinstance(data, list):
             for item in data:
-                if find_check_date_in_json(item, check_date):
+                if self.find_check_date_in_json(item, check_date):
                     return True
         elif isinstance(data, str):
             if check_date in data:
