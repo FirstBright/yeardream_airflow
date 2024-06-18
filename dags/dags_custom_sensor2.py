@@ -3,7 +3,7 @@ from airflow import DAG
 import pendulum
 
 with DAG(
-    dag_id='dags_custom_sensor',
+    dag_id='dags_custom_sensor2',
     start_date=pendulum.datetime(2024,6,14, tz='Asia/Seoul'),
     schedule='0 9 * * *',
     catchup=False
