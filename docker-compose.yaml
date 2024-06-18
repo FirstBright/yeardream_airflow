@@ -290,6 +290,9 @@ services:
         user: "0:0"
         volumes:
             - ${AIRFLOW_PROJ_DIR:-.}:/sources
+        networks:
+            network_custom:
+                ipv4_address: 172.28.0.10
 
     airflow-cli:
         <<: *airflow-common
