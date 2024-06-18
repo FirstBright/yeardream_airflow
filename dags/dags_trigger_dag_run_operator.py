@@ -20,7 +20,7 @@ with DAG(
         task_id='trigger_dag_task',
         trigger_dag_id='dags_python_operator',
         trigger_run_id=None,
-        logical_date='{{data_interval_start}}',
+        logical_date=None,
         reset_dag_run=True,
         wait_for_completion=False,
         poke_interval=60,
