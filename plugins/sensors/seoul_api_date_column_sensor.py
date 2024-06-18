@@ -16,6 +16,7 @@ class SeoulApiDateColumnSensor(BaseSensorOperator):
         connection = BaseHook.get_connection(self.http_conn_id)
         url = f'http://{connection.host}:{connection.port}/{self.endpoint}/'
         self.log.info(f'url:{url}')
+        self.log.info(f"{self.check_date}")
         response = requests.get(url)
         contents = json.loads(response.text)
         self.log.info(f"response: {contents}")
