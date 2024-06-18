@@ -1,4 +1,4 @@
-from airflow.sensor.base import BaseSensorOperator
+from airflow.sensors.base import BaseSensorOperator
 from airflow.hooks.base import BaseHook
 
 class SeoulApiDateColumnSensor(BaseSensorOperator):
