@@ -19,7 +19,7 @@ with DAG(
     trigger_dag_task = TriggerDagRunOperator(
         task_id='trigger_dag_task',
         trigger_dag_id='dags_python_operator',
-        trigger_run_id='김철성',
+        trigger_run_id='idontknow',
         logical_date=None,
         reset_dag_run=True,
         wait_for_completion=False,
