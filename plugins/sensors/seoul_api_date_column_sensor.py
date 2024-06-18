@@ -2,7 +2,7 @@ from airflow.sensors.base import BaseSensorOperator
 from airflow.hooks.base import BaseHook
 
 class SeoulApiDateColumnSensor(BaseSensorOperator):
-    template_fields = ('endpoint')
+    template_fields = ('endpoint','check_date')
 
     def __init__(self,dataset_nm,check_date,**kwargs):
         super().__init__(**kwargs)
