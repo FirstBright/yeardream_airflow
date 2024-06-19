@@ -42,7 +42,7 @@ class SeoulApiDateColumnSensor(BaseSensorOperator):
         last_date = last_date[:8]
 
         search_ymd = (context.get('data_interval_end').in_timezone('Asia/Seoul') + relativedelta(
-            days=self.day_off)).strftime('%Y-%m-%d')
+            days=self.day_off)).strftime('%Y%m-%d')
         try:
             pendulum.from_format(last_date, 'YYYYMMDD')
         except:
